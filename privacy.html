@@ -92,6 +92,13 @@
     <p>If you have any questions about this policy, you can reach us at <a href="mailto:innerecho.journal@gmail.com">innerecho.journal@gmail.com</a>.</p>
 
     <p>We may update this policy from time to time. Changes will be posted here with a new effective date.</p>
+    <p id="footer-date" style="font-size: 0.9em; color: #777;"></p>
+    
+<script>
+  const date = new Date().toLocaleDateString();
+  document.getElementById("footer-date").innerText = `Downloaded on: ${date}`;
+</script>
+
 
     <!-- PDF Download Button -->
     <button id="downloadBtn">Download PDF</button>
