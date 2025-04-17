@@ -41,25 +41,37 @@
       display: block;
       margin: 5px 0;
     }
+    #downloadBtn {
+      margin-top: 40px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #downloadBtn:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <main>
+  <main id="policy-content">
     <h1>Privacy Policy for InnerEcho</h1>
     <p><strong>Effective date:</strong> April 16, 2025</p>
     <p>InnerEcho is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our app.</p>
 
     <!-- Table of Contents -->
     <nav aria-label="Table of Contents">
-  <h2>Table of Contents</h2>
-  <ul>
-    <li><a href="#data-we-collect">1. Data We Collect</a></li>
-    <li><a href="#optional-cloud-sync">2. Optional Cloud Sync</a></li>
-    <li><a href="#analytics">3. Analytics</a></li>
-    <li><a href="#your-control">4. Your Control</a></li>
-    <li><a href="#contact-us">5. Contact Us</a></li>
-  </ul>
-</nav>
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#data-we-collect">1. Data We Collect</a></li>
+        <li><a href="#optional-cloud-sync">2. Optional Cloud Sync</a></li>
+        <li><a href="#analytics">3. Analytics</a></li>
+        <li><a href="#your-control">4. Your Control</a></li>
+        <li><a href="#contact-us">5. Contact Us</a></li>
+      </ul>
+    </nav>
 
     <h2 id="data-we-collect">1. Data We Collect</h2>
     <p>We do <strong>not collect any personally identifiable information</strong>. Your journal entries, moods, and other data are stored locally on your device or in your personal cloud if sync is enabled.</p>
@@ -80,6 +92,28 @@
     <p>If you have any questions about this policy, you can reach us at <a href="mailto:innerecho.journal@gmail.com">innerecho.journal@gmail.com</a>.</p>
 
     <p>We may update this policy from time to time. Changes will be posted here with a new effective date.</p>
+
+    <!-- PDF Download Button -->
+    <button id="downloadBtn">Download PDF</button>
   </main>
+
+  <!-- html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const element = document.getElementById('policy-content');
+
+      const opt = {
+        margin: 0.5,
+        filename: 'InnerEcho-Privacy-Policy.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save();
+    });
+  </script>
 </body>
 </html>
+
